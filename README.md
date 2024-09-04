@@ -6,8 +6,8 @@ Proyecto personal realizado para llevar el control de las ventas, gastos e inven
 
 
 Glosario de Términos:
-UA: Usuario autorizado
-UNA: Usuario no autorizado
+- UA: Usuario autorizado
+- UNA: Usuario no autorizado
 
 
 
