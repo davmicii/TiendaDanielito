@@ -1,0 +1,79 @@
+{% extends 'body.html' %}
+
+{% block body %}
+    <form method="post" action="." enctype="multipart/form-data">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">
+                    {% if action == 'add' %}
+                        <i class="fas fa-plus"></i>
+                    {% else %}
+                        <i class="fas fa-edit"></i>
+                    {% endif %}
+                    {{ nuevo }}
+                </h3>
+            </div>
+
+            <div class="card-body">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="{{ action }}">
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        <h5><i class="icon fas fa-ban">Ha ocurrido un error al agregar el registro</i></h5>
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat btnTest">
+                    <i class="fas fa-save"></i>
+                    Guardar registro
+                </button>
+            </div>
+        </div>
+    </form>
+    <script>
+        {% if form.errors %}
+            var errors = '';
+            {% for field in form %}
+                {% for error in field.errors %}
+
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            	errors+= '{{ error }}\n';
+            {% endfor %}
+
+            Swal.fire({
+                title: 'Error',
+                text: errors,
+                icon: 'error'
+            });
+        {% endif %}
+
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            //var params = $(this).serializeArray();
+            var params = new FormData(this);
+            params.forEach(function(value, key){
+                console.log(value, key);
+            })
+            submit_with_ajax(window.location.pathname, params, function(){
+                window.location.href = '{{ list_url }}';
+            })
+        });
+    </script>
+{% endblock %}

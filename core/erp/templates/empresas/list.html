@@ -1,0 +1,36 @@
+{% extends 'body.html' %}
+{% load static %}
+
+{% block head_dashboard %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for obj in object_list %}
+                <div class="main-card col-md-4 mb-4 d-flex">
+                    <div class="card category-card" style="width: 18rem; cursor: pointer;" data-empresa-name="{{ obj.nombre }}">
+                        <img src="{{ obj.get_image }}" style="height: 200px;" class="card-img-top custom-img" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ obj.nombre }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'erp:empresa_update' obj.id %}" class="card-link" type="button"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'erp:empresa_delete' obj.id %}" class="card-link" type="button"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'erp:empresa_create' %}" class="btn btn-primary btn-flat btnTest">
+            <i class="fas fa-plus"></i>
+            Nuevo registro
+        </a>
+    </div>
+{% endblock %}

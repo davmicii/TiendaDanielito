@@ -1,0 +1,171 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #F7F7F7FF;
+}
+
+.horizontal-dashboard {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    height: 60px; /* Fixed height */
+}
+
+.horizontal-dashboard .settings {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.horizontal-dashboard .settings .m-5{
+    color: #333333;
+}
+
+.horizontal-dashboard .settings-button {
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.horizontal-dashboard .settings-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% - 30px);
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.horizontal-dashboard .settings-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333333;
+}
+
+.horizontal-dashboard .settings-dropdown a:hover {
+    background-color: #f0f0f0;
+}
+
+.horizontal-dashboard .settings-dropdown.show {
+    display: block;
+}
+
+.vertical-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    overflow: auto;
+}
+
+.vertical-dashboard .title {
+    text-align: center;
+}
+
+.vertical-dashboard .title h1 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.vertical-dashboard hr {
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.vertical-dashboard .menu {
+    width: 100%;
+}
+
+.vertical-dashboard .menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333333;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.vertical-dashboard .menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.horizontal-dashboard{
+    grid-area: horizontal;
+}
+.vertical-dashboard{
+    grid-area: vertical;
+}
+.content{
+    grid-area: content;
+    border: none;
+    margin-left: 1px;
+    padding: 20px;
+}
+
+body{
+    display: grid;
+    grid-template-areas:
+            "vertical horizontal"
+            "vertical content";
+    grid-template-columns: 250px calc(100% - 250px);
+    grid-template-rows: 60px auto;
+}
+
+td.details-control{
+    background: url('../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control{
+    background: url('../img/details_close.png') no-repeat center center;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .vertical-dashboard {
+        display: flex;
+    }
+
+    .horizontal-dashboard {
+        margin-left: 1px;
+        width: calc(100% - 1px); /* Adjust width */
+    }
+}
+
+@media (max-width: 767px) {
+    .horizontal-dashboard {
+        width: 100%;
+    }
+
+    .vertical-dashboard {
+        display: none;
+    }
+}

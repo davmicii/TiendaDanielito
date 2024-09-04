@@ -1,0 +1,62 @@
+{% extends 'header.html' %}
+
+{% load static %}
+{% block head_dashboard %}
+
+{% endblock %}
+
+{% block body_dashboard %}
+    <body>
+        {% csrf_token %}
+        <div class="vertical-dashboard">
+            <div class="title">
+                <h1><a href="{% url 'erp:dashboard' %}">{{ title }}</a></h1>
+                <hr>
+            </div>
+            <nav class="menu">
+                {% for option in navigation_options %}
+                    {% if option.url != '#' %}
+                        <a href="{% url option.url %}">{{ option.name }}</a>
+                    {% else %}
+                        <a href="#">{{ option.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+        </div>
+        <div class="horizontal-dashboard">
+            <div class="settings">
+                <h5 class="m-5">Bienvenido, {{ request.user.username }}</h5>
+                <button class="settings-button">
+                    <img src="{% static 'img/dashboard/settings.svg' %}" alt="Ajustes">
+                </button>
+                <div class="settings-dropdown">
+                    {% for option in settings_options %}
+                        <a href="{% url option.url %}">{{ option.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+        {% block javascript %}
+
+        {% endblock %}
+        <script>
+            {% if messages %}
+                var html = '<p>';
+                {% for message in messages %}
+                    html+= '{{ message }}<br>';
+                {% endfor %}
+                html+='</p>';
+                Swal.fire({
+                    title: '¡Error!',
+                    html: html,
+                    icon: 'error'
+                });
+            {% endif %}
+        </script>
+    </body>
+{% endblock %}

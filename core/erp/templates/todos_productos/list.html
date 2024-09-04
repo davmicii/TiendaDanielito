@@ -1,0 +1,29 @@
+{% extends 'body.html' %}
+{% load static %}
+
+
+{% block head_dashboard %}
+    <script src="{% static 'js/redirect_subcat.js' %}"></script>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for obj in object_list %}
+                <div class="main-card col-md-3 mb-4 d-flex">
+                    <div class="card list-product-card" style="width: 18rem; cursor: pointer;" data-product-name= "{{ obj.nombre }}" data-product-id="{{ obj.id }}">
+                        <img src="{{ obj.get_image }}" style="height: 200px;" class="card-img-top custom-img" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ obj.nombre }}</h5>
+                                <p class="card-text">$ {{ obj.precio }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'body.html' %}
+{% load static %}
+
+
+{% block head_dashboard %}
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <table class="table" id="data">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5%;">N°</th>
+                    <th scope="col" style="width: 20%; text-align: center;">Empresa</th>
+                    <th scope="col" style="width: 40%;">Nombre</th>
+                    <th scope="col" style="width: 15%;">Teléfono</th>
+                    <th scope="col" style="width: 20%;">Días de Visita</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in object_list %}
+                    <tr>
+                        <td>{{ obj.id }}</td>
+                        <td>{{ obj.empresa.nombre }}</td>
+                        <td>{{ obj.nombre }}</td>
+                        <td>{{ obj.telefono }}</td>
+                        <td>{{ obj.bool_dias_visita_formatted  }}</td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'erp:proveedor_delete' obj.id %}" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <a href="{% url 'erp:proveedor_create' %}" class="btn btn-primary btn-flat btnTest">
+            <i class="fas fa-plus"></i> Nuevo registro
+        </a>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+    <script type="application/javascript">
+        $(function(){
+            $('#data').DataTable({
+                responsive: true,
+                autoWidth: false
+            });
+        });
+    </script>
+{% endblock %}

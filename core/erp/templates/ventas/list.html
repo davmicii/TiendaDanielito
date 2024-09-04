@@ -1,0 +1,70 @@
+{% extends 'body.html' %}
+{% load static %}
+
+
+{% block head_dashboard %}
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}"/>
+    <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'ventas/js/list.js' %}"></script>
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <table class="table table-bordered" id="data">
+            <thead>
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Fecha de Venta</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">IVA</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <a href="{{ create_url }}" class="btn btn-primary btn-flat btnTest">
+            <i class="fas fa-plus"></i> Nuevo registro
+        </a>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+    <div class="modal fade" id="myModelDet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b><i class="fas fa-shopping-cart"></i> Consulta de
+                        detalle de productos</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered" id="tblDet">
+                        <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>PVP</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

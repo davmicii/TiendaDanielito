@@ -1,0 +1,37 @@
+{% extends 'body.html' %}
+{% load static %}
+
+{% block head_dashboard %}
+    <script src="{% static 'js/redirect_subcat.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for obj in object_list %}
+                <div class="main-card col-md-4 mb-4 d-flex">
+                    <div class="card sub-category-card" style="width: 18rem; cursor: pointer;" data-subcategory-name="{{ obj.nombre }}">
+                        <img src="{{ obj.get_image }}" style="height: 200px;" class="card-img-top custom-img" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: 500;">{{ obj.nombre }}</h5>
+                        </div>
+                        <div class="card-body">
+                            {% for option in subcategory_options %}
+                                <a href="{% url option.url category_name obj.nombre category_id obj.id %}" class="card-link" type="button"><i class="{{ option.class }}"></i></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="card-footer">
+        {% for option in subcategory_create %}
+            <a href="{% url option.url category_id category_name %}" class="btn btn-primary btn-flat btnTest"><i class="fas fa-plus"></i>{{ option.name }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

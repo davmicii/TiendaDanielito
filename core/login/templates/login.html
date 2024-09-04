@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tienda Danielito</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="{% static 'lib/sweetalert2-11.10.6/package/dist/sweetalert2.all.min.js' %}"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>{{ title }}</h2>
+            <form action="." method="post">
+                <input type="hidden" name="next" value="{{ next }}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
+    </div>
+    <script type="application/javascript">
+        {% if form.errors %}
+            var errors = '';
+            {% for field in form %}
+                {% for error in field.errors %}
+
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                errors+= '{{ error }}\n';
+            {% endfor %}
+            Swal.fire({
+                title: 'Error',
+                text: errors,
+                icon: 'error'
+            });
+        {% endif %}
+    </script>
+</body>
+</html>
