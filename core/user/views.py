@@ -7,8 +7,8 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from app.core.user.forms import UserForm, UserProfileForm
-from app.core.user.models import User
+from core.user.forms import UserForm, UserProfileForm
+from core.user.models import User
 
 
 # Create your views here.

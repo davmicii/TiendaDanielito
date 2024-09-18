@@ -8,9 +8,9 @@ from django.utils.timezone import now
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from app.core.erp.forms import ProductoForm
-from app.core.erp.models import Producto, SubCategoria
-from app.core.erp.mixins import MultiPermissionRequiredMixin
+from core.erp.forms import ProductoForm
+from core.erp.models import Producto, SubCategoria
+from core.erp.mixins import MultiPermissionRequiredMixin
 
 
 class ProductoListView(MultiPermissionRequiredMixin, ListView):

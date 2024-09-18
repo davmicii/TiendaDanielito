@@ -1,0 +1,11 @@
+/* Cambia el fondo de la lista de sugerencias a blanco */
+.ui-autocomplete {
+    background-color: white; /* Fondo blanco */
+    border: 1px solid #ccc;   /* Bordes opcionales */
+    z-index: 9999;            /* Asegura que esté visible sobre otros elementos */
+}
+
+/* Cambia el color del fondo cuando pasas el mouse sobre los elementos */
+.ui-menu-item-wrapper.ui-state-active {
+    background-color: #f0f0f0; /* Color de fondo al pasar el mouse */
+}

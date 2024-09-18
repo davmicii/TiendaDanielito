@@ -1,6 +1,6 @@
 from django.urls import path
 
-from app.core.login.views import *
+from core.login.views import *
 
 urlpatterns = [
     path('', LoginFormView.as_view(), name='login'),

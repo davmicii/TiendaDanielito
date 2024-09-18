@@ -140,7 +140,7 @@ $(function () {
             });
         },
         delay: 500,
-        minLength: 1,
+        minLength: 1,        
         select: function (event, ui) {
             event.preventDefault();
             console.clear();

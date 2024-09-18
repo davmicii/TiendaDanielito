@@ -6,6 +6,13 @@
 {% endblock %}
 
 {% block body %}
+    <div class="card-footer">
+        <a href="{% url 'erp:empresa_create' %}" class="btn btn-primary btn-flat btnTest">
+            <i class="fas fa-plus"></i>
+            Nuevo registro
+        </a>
+    </div>
+    <br>
     <div class="container">
         <div class="row">
             {% for obj in object_list %}
@@ -13,7 +20,8 @@
                     <div class="card category-card" style="width: 18rem; cursor: pointer;" data-empresa-name="{{ obj.nombre }}">
                         <img src="{{ obj.get_image }}" style="height: 200px;" class="card-img-top custom-img" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">{{ obj.nombre }}</h5>
+                            <h5 class="card-title" style="font-weight: bold;">{{ obj.nombre }}</h5><br>
+                            <span class="card-description">{{ obj.direccion }}</span>
                         </div>
                         <div class="card-body">
                             <a href="{% url 'erp:empresa_update' obj.id %}" class="card-link" type="button"><i class="fas fa-edit"></i></a>
@@ -26,11 +34,5 @@
                 {% endif %}
             {% endfor %}
         </div>
-    </div>
-    <div class="card-footer">
-        <a href="{% url 'erp:empresa_create' %}" class="btn btn-primary btn-flat btnTest">
-            <i class="fas fa-plus"></i>
-            Nuevo registro
-        </a>
-    </div>
+    </div>    
 {% endblock %}

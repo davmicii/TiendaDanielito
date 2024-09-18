@@ -12,9 +12,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, View
 from xhtml2pdf import pisa
 
-from app.core.erp.forms import VentaForm
-from app.core.erp.models import Venta
-from app.core.erp.mixins import MultiPermissionRequiredMixin
+from core.erp.forms import VentaForm
+from core.erp.models import Venta
+from core.erp.mixins import MultiPermissionRequiredMixin
 
 
 class ListVentaView(MultiPermissionRequiredMixin, ListView):

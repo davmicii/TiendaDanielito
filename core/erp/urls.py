@@ -1,23 +1,23 @@
 from django.urls import path
 
-from app.core.erp.templates.dashboard.views import DashboardView
-from app.core.erp.views.categorias.views import CategoriaListView, CategoriaCreateView, CategoriaUpdateView, CategoriaDeleteView
-from app.core.erp.views.clientes.views import ClienteCreateView
-from app.core.erp.views.detalle_producto.views import DetalleProductoListView
-from app.core.erp.views.empresas.views import EmpresaListView, EmpresaCreateView, EmpresaUpdateView, EmpresaDeleteView
-from app.core.erp.views.inventario.views import InventarioCreateView
-from app.core.erp.views.pagos.views import ListPagoView, CrearPagoView
-from app.core.erp.views.productos.views import ProductoListView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView
-from app.core.erp.views.proveedores.views import ProveedorListView, ProveedorCreateView, ProveedorDeleteView
-from app.core.erp.views.subcategorias.views import SubCategoriaListView, SubCategoriaCreateView, SubCategoriaDeleteView, SubCategoriaUpdateView
-from app.core.erp.views.todos_productos.views import TodoProductosListView
-from app.core.erp.views.ventas.views import CrearVentaView, ListVentaView, VentaInvocarPDF
+from core.erp.views.dashboard.dashboard import DashboardListView
+from core.erp.views.categorias.views import CategoriaListView, CategoriaCreateView, CategoriaUpdateView, CategoriaDeleteView
+from core.erp.views.clientes.views import ClienteCreateView
+from core.erp.views.detalle_producto.views import DetalleProductoListView
+from core.erp.views.empresas.views import EmpresaListView, EmpresaCreateView, EmpresaUpdateView, EmpresaDeleteView
+from core.erp.views.inventario.views import InventarioCreateView
+from core.erp.views.pagos.views import ListPagoView, CrearPagoView
+from core.erp.views.productos.views import ProductoListView, ProductoCreateView, ProductoUpdateView, ProductoDeleteView
+from core.erp.views.proveedores.views import ProveedorListView, ProveedorCreateView, ProveedorDeleteView
+from core.erp.views.subcategorias.views import SubCategoriaListView, SubCategoriaCreateView, SubCategoriaDeleteView, SubCategoriaUpdateView
+from core.erp.views.todos_productos.views import TodoProductosListView
+from core.erp.views.ventas.views import CrearVentaView, ListVentaView, VentaInvocarPDF
 
 app_name = 'erp'
 
 urlpatterns = [
     # Dashboard
-    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('dashboard/', DashboardListView.as_view(), name='dashboard'),
 
 
     # Clientes

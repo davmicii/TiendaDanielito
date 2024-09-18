@@ -8,9 +8,9 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView
 
-from app.core.erp.forms import PagoForm
-from app.core.erp.mixins import MultiPermissionRequiredMixin
-from app.core.erp.models import Pago
+from core.erp.forms import PagoForm
+from core.erp.mixins import MultiPermissionRequiredMixin
+from core.erp.models import Pago
 
 
 class ListPagoView(MultiPermissionRequiredMixin, ListView):

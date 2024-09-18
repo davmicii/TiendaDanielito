@@ -1,7 +1,7 @@
-var tblSale;
+var tblPago;
 
 $(function () {
-    tblSale = $('#data').DataTable({
+    tblPago = $('#data').DataTable({
         //responsive: true,
         scrollX: true,
         autoWidth: false,

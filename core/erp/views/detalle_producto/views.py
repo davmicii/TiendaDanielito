@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView
 
-from app.core.erp.models import Producto
+from core.erp.models import Producto
 
 
 class DetalleProductoListView(ListView):

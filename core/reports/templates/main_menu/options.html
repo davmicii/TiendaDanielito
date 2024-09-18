@@ -1,0 +1,35 @@
+{% extends 'body.html' %}
+{% load static %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">        
+            <div class="main-card col-md-4 mb-4 d-flex">
+                <div class="card category-card" style="width: 18rem; cursor: pointer;">
+                    <img src="{% static 'img/reportes/ventas.svg' %}" style="height: 200px;" class="card-img-top custom-img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: 500;">Reportes de ventas</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ rep_ventas}}" class="card-link" type="button"><i></i>Ver reportes</a>        
+                    </div>
+                </div>
+            </div>
+            <div class="main-card col-md-4 mb-4 d-flex"></div>
+                <div class="card category-card" style="width: 18rem; cursor: pointer;">
+                    <img src="{% static 'img/reportes/gastos.svg' %}" style="height: 200px;" class="card-img-top custom-img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: 500;">Reportes de pagos</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ rep_pagos}}" class="card-link" type="button"><i></i>Ver reportes</a>        
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                </div><div class="row">
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

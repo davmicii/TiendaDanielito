@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect
 from django.views.generic import RedirectView
 
-import app.config.settings as setting
+import config.settings as setting
 
 
 class LoginFormView(LoginView):

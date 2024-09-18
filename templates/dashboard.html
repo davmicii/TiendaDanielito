@@ -1,1 +1,45 @@
 {% extends 'body.html' %}
+{% load static %}
+
+{% block body %}
+<div class="flex-g-v">
+    <div class="card mb-3" style="width: 50%; background-color: #058560;">
+        <div class="row no-gutters">        
+            <div class="col-md-4">
+                <br>
+                <img src="{% static 'img/reportes/ventas_diarias.svg' %}" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    {% for venta in ventas_diarias %}                
+                        <h2 class="card-title" style="font-weight: bold; color: #fff; font-size: 4em;">${{ venta.1 }}</h2>
+                        <p class="card-text" style="color:#fff;">{{ venta.0 }}</p>                
+                    {% endfor %}
+                </div>        
+            </div>
+                <div class="card-footer" style="cursor:pointer; background-color: #016c4d; width: 100%; text-align:center;font-weight:600; font-size:1.1em; letter-spacing:1px; color: #fff;">
+                    <a href={{ rep_ventas }} class="card-text" style="color:#fff">Ver reportes de ventas</a>
+            </div>  
+        </div>
+    </div>
+    <div class="card mb-3" style="width: 50%; background-color: #e63946;">
+        <div class="row no-gutters">        
+            <div class="col-md-4">
+                <br>
+                <img src="{% static 'img/reportes/gastos_diarios.svg' %}" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    {% for pago in gastos_diarios %}                
+                        <h2 class="card-title" style="font-weight: bold; color: #fff; font-size: 4em;">${{ pago.1 }}</h2>
+                        <p class="card-text" style="color:#fff;">{{ pago.0 }}</p>                
+                    {% endfor %}
+                </div>        
+            </div>
+            <div class="card-footer" style="cursor:pointer; background-color: #cd2532; width: 100%; text-align:center;font-weight:600; font-size:1.1em; letter-spacing:1px; color: #fff;">
+                <a href={{ rep_pagos }} class="card-text" style="color:#fff">Ver reportes de pagos</a>
+            </div>  
+        </div>
+    </div>    
+</div>
+{% endblock %}

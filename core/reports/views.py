@@ -9,8 +9,8 @@ from django.views.generic import TemplateView
 from django.db.models.functions import Coalesce
 from django.db.models import Sum, DecimalField
 
-from app.core.erp.models import Categoria, Venta
-from app.core.reports.forms import ReportForm
+from core.erp.models import Categoria, Venta
+from core.reports.forms import ReportForm
 
 
 class ReportVentaView(TemplateView):
@@ -50,3 +50,64 @@ class ReportVentaView(TemplateView):
         context['list_url'] = reverse_lazy('report_venta')
         context['form'] = ReportForm()
         return context
+
+
+class ReportPagoView(TemplateView):        
+    template_name = 'pagos/report.html'
+
+    @method_decorator(csrf_exempt)
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = []
+        try:
+            action = request.POST['action']
+            if action == 'search_report':
+                start_date = request.POST.get('start_date', '')
+                end_date = request.POST.get('end_date', '')
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT * FROM sp_list_pagos_by_fecha(%s, %s)", [start_date, end_date])
+                    rows = cursor.fetchall()
+                    columns = [col[0] for col in cursor.description]
+                    for row in rows:
+                        data.append(dict(zip(columns, row)))
+            else:
+                data.append({'error': 'Ha ocurrido un error'})
+        except Exception as e:
+            data = [{'error': str(e)}]
+        return JsonResponse({'data': data}, safe=False)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = 'Reportes'
+        context['title'] = 'Tienda Danielito'
+        context['nuevo'] = 'Reportes'
+        context['entity'] = 'Reportes'
+        context['action'] = 'search_report'
+        context['list_url'] = reverse_lazy('report_pago')
+        context['form'] = ReportForm()
+        return context
+    
+    
+class OptionsView(TemplateView):        
+    template_name = 'main_menu/options.html'
+
+    @method_decorator(csrf_exempt)
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = 'Reportes'
+        context['title'] = 'Tienda Danielito'
+        context['nuevo'] = 'Reportes'
+        context['entity'] = 'Reportes'
+        context['action'] = 'search_report'
+        context['form'] = ReportForm()
+        context['rep_ventas'] = reverse_lazy('report_venta')
+        context['rep_pagos'] = reverse_lazy('report_pago')
+        return context    

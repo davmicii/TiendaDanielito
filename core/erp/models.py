@@ -4,8 +4,8 @@ from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.forms import model_to_dict
 
-from app.config.settings import MEDIA_URL, STATIC_URL
-from app.core.erp.choices import gender_choices
+from config.settings import MEDIA_URL, STATIC_URL
+from core.erp.choices import gender_choices
 
 
 class Categoria(models.Model):

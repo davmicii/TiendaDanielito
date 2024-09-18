@@ -1,6 +1,6 @@
 from django.forms import ModelForm, PasswordInput, TextInput, SelectMultiple, EmailInput
 
-from app.core.user.models import User
+from core.user.models import User
 
 
 class UserForm(ModelForm):

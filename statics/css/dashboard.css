@@ -149,6 +149,14 @@ tr.shown td.details-control{
     cursor: pointer;
 }
 
+.flex-g-v{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
 @media (min-width: 768px) {
     .vertical-dashboard {
         display: flex;

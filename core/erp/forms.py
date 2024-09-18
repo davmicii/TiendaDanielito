@@ -4,7 +4,7 @@ from django.contrib.postgres.forms import SimpleArrayField
 from django.forms import ModelForm, TextInput, SelectMultiple, Select, DateInput
 from django import forms
 
-from app.core.erp.models import Categoria, SubCategoria, Empresa, Producto, Inventario, Proveedor, Venta, Cliente, Pago
+from core.erp.models import Categoria, SubCategoria, Empresa, Producto, Inventario, Proveedor, Venta, Cliente, Pago
 
 
 class CategoriaForm(ModelForm):

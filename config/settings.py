@@ -10,8 +10,8 @@ For the full list of config and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
-import app.config.db as db
-from app.core.erp.context_processors import user_navigation
+import config.db as db
+from core.erp.context_processors import user_navigation
 
 #from pathlib import Path
 
@@ -42,10 +42,10 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 LOCAL_APPS = [
-    'app.core.erp',
-    'app.core.login',
-    'app.core.user',
-    'app.core.reports',
+    'core.erp',
+    'core.login',
+    'core.user',
+    'core.reports',
 ]
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
@@ -130,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'statics/'
+STATIC_URL = '/statics/'
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 

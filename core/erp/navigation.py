@@ -6,7 +6,7 @@ NAVIGATION_OPTIONS = {
         {'name': 'Productos', 'url': 'erp:todos_productos'},
         {'name': 'Ventas', 'url': 'erp:list_venta'},
         {'name': 'Pagos', 'url': 'erp:list_pago'},
-        {'name': 'Reportes', 'url': 'report_venta'},
+        {'name': 'Reportes', 'url': 'all_reports'},
         {'name': 'Clientes', 'url': 'erp:cliente-create'},
         {'name': 'Empresas', 'url': 'erp:empresa_list'},
         {'name': 'Inventario', 'url': 'erp:agregar_inventario'},

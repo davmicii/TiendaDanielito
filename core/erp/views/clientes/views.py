@@ -6,9 +6,9 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 
-from app.core.erp.mixins import MultiPermissionRequiredMixin
-from app.core.erp.forms import ClienteForm
-from app.core.erp.models import Cliente
+from core.erp.mixins import MultiPermissionRequiredMixin
+from core.erp.forms import ClienteForm
+from core.erp.models import Cliente
 
 
 class ClienteCreateView(MultiPermissionRequiredMixin, CreateView):

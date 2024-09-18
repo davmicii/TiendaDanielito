@@ -1,7 +1,9 @@
 from django.urls import path
 
-from app.core.reports.views import ReportVentaView
+from core.reports.views import ReportVentaView, ReportPagoView, OptionsView
 
 urlpatterns = [
-    path('venta/', ReportVentaView.as_view(), name='report_venta')
+    path('todos/', OptionsView.as_view(), name='all_reports'),
+    path('venta/', ReportVentaView.as_view(), name='report_venta'),
+    path('pago/', ReportPagoView.as_view(), name='report_pago')
 ]

@@ -6,9 +6,9 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, DeleteView
 
-from app.core.erp.forms import ProveedorForm
-from app.core.erp.models import Proveedor, Empresa
-from app.core.erp.mixins import MultiPermissionRequiredMixin
+from core.erp.forms import ProveedorForm
+from core.erp.models import Proveedor, Empresa
+from core.erp.mixins import MultiPermissionRequiredMixin
 
 
 class ProveedorListView(MultiPermissionRequiredMixin, ListView):
