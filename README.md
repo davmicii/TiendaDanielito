@@ -69,8 +69,8 @@ Estas son la mayoría de las funciones que realiza el sistema.
 
 
 Siguientes mejoras TiendaDanielito 1.1:
-- Mejorar el proceso de gestión de inventario.
-- Completar el módulo de pagos, tiene similitud con el de ventas.
+- Mejorar el proceso de gestión de inventario (listo).
+- Completar el módulo de pagos, tiene similitud con el de ventas (listo).
 - Completar el módulo de facturas, cuando se hace una venta, guardar el PDF también en ese módulo, separarlos en facturas de
   ventas y pagos.
 
