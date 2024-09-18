@@ -89,22 +89,24 @@ class ProductoCreateView(MultiPermissionRequiredMixin, CreateView):
                     ruta_completa = default_storage.save(ruta_guardado, imagen_producto)
 
                     with connection.cursor() as cursor:
-                        cursor.execute("CALL sp_create_producto(%s, %s, %s, %s, %s, %s)", [
+                        cursor.execute("CALL sp_create_producto(%s, %s, %s, %s, %s, %s, %s)", [
                             request.POST['nombre'],
                             request.POST['descripcion'],
                             request.POST['precio'],
                             ruta_completa,
                             subcategory_id,
                             request.POST['empresa'],
+                            request.POST['stock_inicial']
                         ])
                 else:
                     with connection.cursor() as cursor:
-                        cursor.execute("CALL sp_create_producto(%s, %s, %s, %s, %s, NULL)", [
+                        cursor.execute("CALL sp_create_producto(%s, %s, %s, NULL, %s, %s, %s)", [
                             request.POST['nombre'],
                             request.POST['descripcion'],
                             request.POST['precio'],
                             subcategory_id,
                             request.POST['empresa'],
+                            request.POST['stock_inicial']
                         ])
                 data['success'] = True
                 data['redirect_url'] = str(self.get_success_url())

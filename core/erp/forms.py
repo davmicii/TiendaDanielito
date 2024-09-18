@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.contrib.postgres.forms import SimpleArrayField
-from django.forms import ModelForm, TextInput, SelectMultiple, Select, DateInput
+from django.forms import ModelForm, TextInput, IntegerField, Select, DateInput, NumberInput
 from django import forms
 
 from core.erp.models import Categoria, SubCategoria, Empresa, Producto, Inventario, Proveedor, Venta, Cliente, Pago
@@ -104,7 +104,7 @@ class EmpresaForm(ModelForm):
         return data
 
 
-class ProductoForm(ModelForm):
+class ProductoForm(ModelForm):   
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for form in self.visible_fields():
@@ -112,6 +112,15 @@ class ProductoForm(ModelForm):
             form.field.widget.attrs['autocomplete'] = 'off'
         self.fields['nombre'].widget.attrs['autofocus'] = True
 
+    stock_inicial = IntegerField(
+        label='Stock inicial',
+        min_value=1,
+        widget=NumberInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Stock inicial',
+            'autocomplete': 'off'
+        })
+    )
     class Meta:
         model = Producto
         fields = '__all__'
